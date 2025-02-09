@@ -11,9 +11,9 @@ app.use(express.json());
 // using zod types we will validate, so we will create new file types.js
 
 app.post("/todo", async function (req, res) {
-	const createdPayload = req.body;
+	const Payload = req.body;
 
-	const parsedPayload = createTodo.safeParse(createPayload);
+	const parsedPayload = createTodo.safeParse(Payload);
 
 	if (!parsedPayload.success) {
 		res.status(411).json({
@@ -25,8 +25,8 @@ app.post("/todo", async function (req, res) {
 	// put it in mongo db
 
 	await todo.create({
-		title: createPayload.title,
-		description: createPayload.description,
+		title: Payload.title,
+		description: Payload.description,
 		completed: false,
 	});
 
