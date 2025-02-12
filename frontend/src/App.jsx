@@ -1,29 +1,38 @@
+
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 import { CreateTodo } from "./components/CreateTodo";
 import { Todos } from "./components/Todos";
+import { Login } from "./components/Login";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-  // Use useEffect to fetch todos when the component mounts
-  useEffect(function () {
-    fetch("http://localhost:3000/todos")
-      .then(async function (res) {
-        const json = await res.json();
-        setTodos(json.todos);
+  useEffect(function() {
+    if (token) {
+      fetch("http://localhost:3000/todos", {
+        headers: { Authorization: "Bearer " + token }
       })
-      .catch(function (error) {
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        setTodos(data.todos);
+      })
+      .catch(function(error) {
         console.error("Error fetching todos:", error);
       });
-  }, []);
+    }
+  }, [token]);
+
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
 
   return (
     <div>
-      <CreateTodo />
-      <Todos todos={todos} />
+      <CreateTodo token={token} />
+      <Todos todos={todos} token={token} />
     </div>
   );
 }
