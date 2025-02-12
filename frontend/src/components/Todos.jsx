@@ -1,43 +1,39 @@
-function Todos(props) {
+function Todos({ todos, token, onTodoUpdated }) {
 	function markCompleted(id) {
-		fetch("http://localhost:3000/completed", {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + props.token,
-			},
-			body: JSON.stringify({ id: id }),
+	  fetch("http://localhost:3000/completed", {
+		method: "PUT",
+		headers: {
+		  "Content-Type": "application/json",
+		  Authorization: "Bearer " + token,
+		},
+		body: JSON.stringify({ id }),
+	  })
+		.then((res) => res.json())
+		.then((data) => {
+		  alert("Todo marked as completed");
+		  if (onTodoUpdated) {
+			onTodoUpdated();
+		  }
 		})
-			.then(function (res) {
-				return res.json();
-			})
-			.then(function (data) {
-				alert("Todo marked as completed");
-			})
-			.catch(function (error) {
-				console.error("Error updating todo:", error);
-			});
+		.catch((error) => {
+		  console.error("Error updating todo:", error);
+		});
 	}
-
+  
 	return (
-		<div>
-			{props.todos.map(function (todo) {
-				return (
-					<div key={todo.id}>
-						<h1>{todo.title}</h1>
-						<h2>{todo.description}</h2>
-						<button
-							onClick={function () {
-								markCompleted(todo.id);
-							}}
-						>
-							{todo.completed ? "Completed" : "Mark as complete"}
-						</button>
-					</div>
-				);
-			})}
-		</div>
+	  <div>
+		{todos.map((todo) => (
+		  <div key={todo._id}>
+			<h1>{todo.title}</h1>
+			<h2>{todo.description}</h2>
+			<button onClick={() => markCompleted(todo._id)}>
+			  {todo.completed ? "Completed" : "Mark as complete"}
+			</button>
+		  </div>
+		))}
+	  </div>
 	);
-}
-
-export { Todos };
+  }
+  
+  export { Todos };
+  
