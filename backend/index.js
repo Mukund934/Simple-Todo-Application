@@ -28,6 +28,7 @@ function authenticateToken(req, res, next) {
 }
 
 app.post("/register", async function (req, res) {
+	console.log("Register endpoint hit");
 	const username = req.body.username;
 	const password = req.body.password;
 	if (!username || !password) {
@@ -52,6 +53,7 @@ app.post("/register", async function (req, res) {
 });
 
 app.post("/login", async function (req, res) {
+	console.log("Login endpoint hit");
 	const username = req.body.username;
 	const password = req.body.password;
 	try {
@@ -77,6 +79,7 @@ app.post("/login", async function (req, res) {
 
 // Create Todo endpoint (protected)
 app.post("/todo", authenticateToken, async function (req, res) {
+	console.log("Create Todo endpoint hit");
 	const payload = req.body;
 	const parsedPayload = createTodo.safeParse(payload);
 	if (!parsedPayload.success) {
@@ -98,6 +101,7 @@ app.post("/todo", authenticateToken, async function (req, res) {
 
 // View Todos endpoint (protected)
 app.get("/todos", authenticateToken, async function (req, res) {
+	console.log("View Todos endpoint hit");
 	try {
 		const todos = await todo.find({ userId: req.user.id }).exec();
 		res.json({ todos: todos });
@@ -109,6 +113,7 @@ app.get("/todos", authenticateToken, async function (req, res) {
 
 // Mark Todo as Completed endpoint (protected)
 app.put("/completed", authenticateToken, async function (req, res) {
+	console.log("Mark Todo as Completed endpoint hit");
 	const updatePayload = req.body;
 	const parsedPayload = updateTodo.safeParse(updatePayload);
 	if (!parsedPayload.success) {
