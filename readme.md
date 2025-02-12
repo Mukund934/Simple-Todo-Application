@@ -24,7 +24,7 @@ A simple, efficient, and user-friendly Todo application designed to help you man
 
 ## 🚀 Demo
 
-View a live demo of the application [here](https://simple-todo-application.onrender.com).
+View a live demo of the application [here](https://simple-todo-application-navy.vercel.app/).
 
 ## 🛠️ Installation
 
