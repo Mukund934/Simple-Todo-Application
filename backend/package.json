@@ -1,15 +1,20 @@
 {
-  "name": "todo-backend",
-  "version": "1.0.0",
-  "description": "This is todo backend",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Mukund",
-  "license": "ISC",
-  "dependencies": { // this constains a extensive list of all the packages used , like express, jsonwebtoken and more if we install , and all are installed into node_module folder(all are packages and dependencies and needed to be installed)
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
-  }
+	"name": "todo-backend",
+	"version": "1.0.0",
+	"description": "This is todo backend",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Mukund",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"cors": "^2.8.5",
+		"express": "^4.21.2",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.10.0",
+		"zod": "^3.24.2"
+	}
 }
