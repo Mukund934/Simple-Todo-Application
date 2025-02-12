@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { CreateTodo } from "./components/CreateTodo";
 import { Todos } from "./components/Todos";
@@ -8,20 +7,23 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-  useEffect(function() {
-    if (token) {
-      fetch("http://localhost:3000/todos", {
-        headers: { Authorization: "Bearer " + token }
-      })
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function(data) {
+  // Function to fetch todos from the backend
+  const fetchTodos = () => {
+    fetch("http://localhost:3000/todos", {
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
         setTodos(data.todos);
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.error("Error fetching todos:", error);
       });
+  };
+
+  useEffect(() => {
+    if (token) {
+      fetchTodos();
     }
   }, [token]);
 
@@ -31,8 +33,8 @@ function App() {
 
   return (
     <div>
-      <CreateTodo token={token} />
-      <Todos todos={todos} token={token} />
+      <CreateTodo token={token} onTodoCreated={fetchTodos} />
+      <Todos todos={todos} token={token} onTodoUpdated={fetchTodos} />
     </div>
   );
 }
