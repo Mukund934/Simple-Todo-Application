@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { CreateTodo } from "./components/CreateTodo";
 import { Todos } from "./components/Todos";
 import { Login } from "./components/Login";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 function App() {
 	const [todos, setTodos] = useState([]);
@@ -9,7 +10,7 @@ function App() {
 
 	const fetchTodos = () => {
 		if (!token) return;
-		fetch("http://localhost:3000/todos", {
+		fetch(`${API_URL}/todos`, {
 			headers: { Authorization: "Bearer " + token },
 		})
 			.then((res) => res.json())

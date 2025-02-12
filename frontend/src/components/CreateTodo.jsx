@@ -1,11 +1,13 @@
 import { useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 
 function CreateTodo({ token, onTodoCreated }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   function handleAddTodo() {
-    fetch("http://localhost:3000/todo", {
+    fetch(`${API_URL}/todo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
