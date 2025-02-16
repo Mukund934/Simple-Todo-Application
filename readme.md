@@ -5,15 +5,15 @@ A simple, efficient, and user-friendly Todo application designed to help you man
 
 ## Table of Contents
 
-- [Features](#features)
-- [Demo](#demo)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Frontend](#frontend)
-  - [Backend](#backend)
-- [Contributing](#contributing)
-- [License](#license)
-- [Notes](#notes)
+- [Features](##features)
+- [Demo](##demo)
+- [Installation](##installation)
+- [Usage](##usage)
+  - [Frontend](###frontend)
+  - [Backend](###backend)
+- [Contributing](##contributing)
+- [License](##license)
+- [Notes](##notes)
 
 ## ✨ Features
 
@@ -25,6 +25,12 @@ A simple, efficient, and user-friendly Todo application designed to help you man
 ## 🚀 Demo
 
 View a live demo of the application [here](https://simple-todo-application-navy.vercel.app/).
+
+#### Testing Authentication:
+- To test the authentication functionality, use the following credentials after registration:
+
+#### username: "`Test`"
+#### password: "`test`"
 
 ## 🛠️ Installation
 
