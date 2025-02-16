@@ -1,4 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 function Todos({ todos, token, onTodoUpdated }) {
   function markCompleted(id) {
     fetch(`${API_URL}/completed`, {
@@ -20,6 +21,7 @@ function Todos({ todos, token, onTodoUpdated }) {
         console.error("Error updating todo:", error);
       });
   }
+
   return (
     <div>
       {todos.map((todo) => (
@@ -37,4 +39,5 @@ function Todos({ todos, token, onTodoUpdated }) {
     </div>
   );
 }
+
 export { Todos };

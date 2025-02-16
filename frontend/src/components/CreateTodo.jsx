@@ -10,9 +10,9 @@ function CreateTodo({ token, onTodoCreated }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token
       },
-      body: JSON.stringify({ title, description }),
+      body: JSON.stringify({ title, description })
     })
       .then((res) => res.json())
       .then((data) => {
@@ -37,7 +37,6 @@ function CreateTodo({ token, onTodoCreated }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <br />
       <input
         className="input-field"
         type="text"
