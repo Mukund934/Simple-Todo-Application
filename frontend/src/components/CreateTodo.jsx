@@ -15,7 +15,7 @@ function CreateTodo({ token, onTodoCreated }) {
       body: JSON.stringify({ title, description })
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         alert("Todo added");
         setTitle("");
         setDescription("");

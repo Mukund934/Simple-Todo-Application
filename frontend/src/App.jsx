@@ -32,22 +32,28 @@ function App() {
   };
 
   if (!token) {
-    return <Login setToken={setToken} />;
+    return (
+      <div className="login-wrapper">
+        <Login setToken={setToken} />
+      </div>
+    );
   }
 
   return (
-    <div className="container">
+    <div className="app-wrapper">
       <header className="header">
         <h1>Simple Todo Application</h1>
       </header>
       <button className="button logout-button" onClick={handleLogout}>
         Logout
       </button>
-      <div className="form-container">
-        <CreateTodo token={token} onTodoCreated={fetchTodos} />
-      </div>
-      <div className="todo-list">
-        <Todos todos={todos} token={token} onTodoUpdated={fetchTodos} />
+      <div className="container">
+        <div className="form-container">
+          <CreateTodo token={token} onTodoCreated={fetchTodos} />
+        </div>
+        <div className="todo-list">
+          <Todos todos={todos} token={token} onTodoUpdated={fetchTodos} />
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function Todos({ todos, token, onTodoUpdated }) {
       body: JSON.stringify({ id })
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         alert("Todo marked as completed");
         if (onTodoUpdated) {
           onTodoUpdated();
