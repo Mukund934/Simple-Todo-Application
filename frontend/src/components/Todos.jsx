@@ -25,7 +25,7 @@ function Todos({ todos, token, onTodoUpdated }) {
   return (
     <div>
       {todos.map((todo) => (
-        <div key={todo._id}>
+        <div className="todo-item" key={todo._id}>
           <h1>{todo.title}</h1>
           <h2>{todo.description}</h2>
           <button
